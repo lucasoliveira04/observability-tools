@@ -6,8 +6,27 @@ scrape_configs:
     static_configs:
       - targets: ["localhost:9090"]
 
-  - job_name: "api-gateway"
+  - job_name: "api-gateway-hml"
     metrics_path: /actuator/prometheus
     static_configs:
       - targets: 
           - host.docker.internal:8080
+
+  - job_name: "api-payments-hml"
+    metrics_path: /metrics
+    static_configs:
+      - targets: 
+          - host.docker.internal:9464
+
+  - job_name: "api-gateway-prod"
+    metrics_path: /actuator/prometheus
+    static_configs:
+      - targets: 
+          - 192.168.1.54:8080
+
+  - job_name: "api-payments-prod"
+    metrics_path: /metrics
+    static_configs:
+      - targets: 
+          - 192.168.1.54:9464
+        
