@@ -1,20 +1,20 @@
 version: "3.8"
 
 services:
-  otel-collector:
-    image: otel/opentelemetry-collector-contrib:latest
-    container_name: otel-collector
-    command: ["--config=/etc/otelcol/config.yml"]
-    restart: unless-stopped
-    volumes:
-      - ./otel-collector/otel-collector-config.yml:/etc/otelcol/config.yml
-    ports:
-      - "4319:4319"
-      - "9465:9465"
-    depends_on:
-      - loki
-    cpus: "0.30"
-    mem_limit: 256m
+  # otel-collector:
+  #   image: otel/opentelemetry-collector-contrib:latest
+  #   container_name: otel-collector
+  #   command: ["--config=/etc/otelcol/config.yml"]
+  #   restart: unless-stopped
+  #   volumes:
+  #     - ./otel-collector/otel-collector-config.yml:/etc/otelcol/config.yml
+  #   ports:
+  #     - "4319:4319"
+  #     - "9465:9465"
+  #   depends_on:
+  #     - loki
+  #   cpus: "0.30"
+  #   mem_limit: 256m
 
   prometheus:
     image: prom/prometheus:latest

@@ -13,10 +13,10 @@ scrape_configs:
           - host.docker.internal:8080
 
   - job_name: "api-payments-hml"
-    metrics_path: /metrics
+    metrics_path: /actuator/prometheus
     static_configs:
       - targets: 
-          - host.docker.internal:9464
+          - host.docker.internal:8083
 
   - job_name: "api-gateway-prod"
     metrics_path: /actuator/prometheus
@@ -25,8 +25,8 @@ scrape_configs:
           - 192.168.1.54:8080
 
   - job_name: "api-payments-prod"
-    metrics_path: /metrics
+    metrics_path: /actuator/prometheus
     static_configs:
       - targets: 
-          - 192.168.1.54:9464
+          - 192.168.1.54:8083
         
