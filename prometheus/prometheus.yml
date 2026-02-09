@@ -29,4 +29,10 @@ scrape_configs:
     static_configs:
       - targets: 
           - 192.168.1.54:8083
+
+  - job_name: "windows_collector"
+    static_configs:
+      - targets:
+          - "host.docker.internal:10243"
+
         
