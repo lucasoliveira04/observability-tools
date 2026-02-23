@@ -50,7 +50,7 @@ services:
     restart: unless-stopped
     volumes:
       - ./promtail/promtail-config.yml:/etc/promtail/promtail-config.yml
-      - /var/log:/var/log
+      - C:/Users/Lucas/Documents/Github RESOMAQ/digital-wallet/logs:/var/log/digital-wallet
     command: -config.file=/etc/promtail/promtail-config.yml
     cpus: "0.20"
     mem_limit: 128m

@@ -9,10 +9,21 @@ clients:
   - url: http://loki:3100/loki/api/v1/push
 
 scrape_configs:
-  - job_name: system
+  - job_name: digital-wallet
     static_configs:
       - targets:
           - localhost
         labels:
-          job: varlogs
-          __path__: /var/log/**/*.log
+          job: digital-wallet
+          service_name: digital-wallet
+          __path__: /var/log/digital-wallet/*.log
+
+    pipeline_stages:
+      - match:
+          selector: '{job="digital-wallet"}'
+          stages:
+            - regex:
+                expression: ' - (?P<json>\{.*\})'
+
+            - output:
+                source: json
